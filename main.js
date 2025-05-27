@@ -1,15 +1,15 @@
 const files = [
-  'wavs/harmonica1.wav',
-  'wavs/harmonica2.wav',
-  'wavs/whistle.wav',
-  'wavs/banjo1.wav',
-  'wavs/banjo2.wav',
-  'wavs/piano.wav',
-  'wavs/bass.wav',
-  'wavs/crash.wav',
-  'wavs/hihat.wav',
-  'wavs/snare.wav',
-  'wavs/stick+kick.wav'
+  'audio/harmonica1.mp3',
+  'audio/harmonica2.mp3',
+  'audio/whistle.mp3',
+  'audio/banjo1.mp3',
+  'audio/banjo2.mp3',
+  'audio/piano.mp3',
+  'audio/bass.mp3',
+  'audio/crash.mp3',
+  'audio/hihat.mp3',
+  'audio/snare.mp3',
+  'audio/stick+kick.mp3'
 ]
 
 const grid = document.getElementById('grid')

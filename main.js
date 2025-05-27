@@ -48,6 +48,7 @@ button.addEventListener('click', () => {
 
 Promise.all(files.map(f => fetch(f).then(r => r.arrayBuffer()).then(b => audioCtx.decodeAudioData(b))))
   .then(buffers => {
+    document.getElementById('loading').style.display = 'none'
     buffers.forEach((buffer, i) => {
       trackBuffers.push(buffer)
       const gain = audioCtx.createGain()

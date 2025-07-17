@@ -205,18 +205,6 @@ function render() {
   });
 }
 
-function unlockAudioContext(ctx) {
-  if (ctx.state !== "suspended") return;
-
-  const buffer = ctx.createBuffer(1, 1, 22050);
-  const source = ctx.createBufferSource();
-  source.buffer = buffer;
-  source.connect(ctx.destination);
-  source.start(0);
-
-  ctx.resume();
-}
-
 async function loadSong(songName) {
   if (currentSong === songName) return;
 
@@ -299,7 +287,6 @@ async function loadSong(songName) {
 
 infoOkBtn.addEventListener("click", () => {
   infoModal.style.display = "none";
-  unlockAudioContext(audioCtx);
   startApp();
 });
 

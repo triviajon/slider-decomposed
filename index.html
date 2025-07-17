@@ -1,13 +1,53 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <title>slider - super mario 64</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div id="loading">Loading...</div>
-  <div id="grid"></div>
-  <script src="main.js"></script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <title>oscope64</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="infoModal">
+      <div id="infoContent">
+        <h1>oscope64</h1>
+        <p>
+          hey! this is an interactive "deconstructed oscillicope" visualizer of
+          tracks from sm64 (ds edition)
+        </p>
+        <h3>controls</h3>
+        <p>click on the play button to start/stop the music</p>
+        <p>click on channels to individually mute/unmute it</p>
+        <p>select a new song in the top left corner</p>
+        <h3>notes</h3>
+        <p>
+          this is inspired by
+          <a
+            href="https://www.youtube.com/watch?v=-QmYJHMtn3Y"
+            target="_blank"
+            rel="noopener"
+            style="color: #0f0"
+            >this video</a
+          >
+          by mr. oscilloscope
+        </p>
+        <p>
+          the code is available on
+          <a
+            href="https://github.com/triviajon/oscope64"
+            target="_blank"
+            rel="noopener"
+            style="color: #0f0"
+            >github</a
+          >
+        </p>
+        <p>fun songs to try are: athretic, mugen, and vocal</p>
+        <button id="infoOkBtn">ok!</button>
+      </div>
+    </div>
+    <div id="loading">
+      <p>loading...</p>
+      <img src="images/Waiting.webp" alt="Waiting" />
+    </div>
+    <div id="grid"></div>
+    <script src="main.js"></script>
+  </body>
 </html>

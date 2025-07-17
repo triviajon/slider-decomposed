@@ -1,10 +1,13 @@
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   height: 100%;
   width: 100%;
   overflow: hidden;
-  font-family: sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #111;
+  color: white;
 }
 
 #grid {
@@ -13,36 +16,103 @@ html, body {
   width: 100vw;
   gap: 5px;
   font-size: 1.25rem;
+  box-sizing: border-box;
 }
 
-@media (orientation: portrait) {
+@media (orientation: landscape) {
   #grid {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(3, 1fr);
   }
 }
 
-@media (orientation: landscape) {
+@media (orientation: portrait) {
   #grid {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(4, 1fr);
+    font-size: 1.75rem;
   }
 }
 
 .cell {
   position: relative;
-  background: rgb(207, 24, 24);
+  background: #cf1818;
   cursor: pointer;
   overflow: hidden;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  color: white;
+}
+
+.cell.muted {
+  background: #222;
+  color: #666;
+}
+
+.cell.unmuted {
+  background: #004600;
+  color: white;
+}
+
+.controls {
+  background: #00007f;
+  color: white;
+  font-size: 1em;
+  padding: 12px 16px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  height: auto;
+  text-align: center;
+  display: flex;
+}
+
+.controls > div,
+.controls > select,
+.controls > button {
+  margin: 0;
+  align-self: center;
+  font-family: inherit;
+  color: inherit;
+  background: transparent;
+  border-radius: 6px;
+}
+
+.controls > select {
+  padding: 6px 10px;
+  border: 2px solid #ffffffaa;
+  background: #5f82a5;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.controls > button {
+  padding: 8px 24px;
+  background: #5f82a5;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  color: white;
+  transition: background-color 0.25s ease;
+}
+
+.controls > button:hover {
+  background: #1a2a44;
 }
 
 canvas {
   display: block;
   width: 100%;
   height: 100%;
+  flex-grow: 1;
 }
 
 .label {
@@ -54,42 +124,135 @@ canvas {
   pointer-events: none;
 }
 
-.controls {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: #344cb4;
-  color: white;
-  font-size: 1em;
-  padding: 10px;
-  text-align: center;
-}
-
-button {
-  margin-top: 10px;
-  font-size: 1em;
-}
-
-.cell.muted {
-  background: #222222;
-}
-
-.cell.unmuted {
-  background: #004600;
-}
-
 #loading {
   position: fixed;
   top: 0;
   left: 0;
-  height: 100vh;
   width: 100vw;
-  background: black;
+  height: 100vh;
+  background: rgba(10, 10, 10, 0.95);
   color: white;
-  font-size: 2em;
+  font-size: 3rem;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   z-index: 9999;
+  text-align: center;
+  font-family: inherit;
+}
+
+#infoModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  color: #eee;
+  font-family: inherit;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  user-select: none;
+  box-sizing: border-box;
+  text-align: center;
+  padding: 20px;
+}
+
+#infoContent {
+  background: #222;
+  padding: 30px 40px;
+  border-radius: 10px;
+  max-width: 400px;
+  width: 90vw;
+  line-height: 1.6;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.7);
+  color: #ddd;
+  overflow-wrap: break-word;
+}
+
+#infoContent h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  color: #ddd;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+#infoContent h3 {
+  font-size: 1.3rem;
+  margin: 1.5rem 0 0.6rem 0;
+  color: #eee;
+  font-weight: 600;
+}
+
+#infoContent p {
+  margin: 0.4rem 0;
+  color: #ddd;
+  font-weight: 400;
+}
+
+#infoContent a {
+  color: #7fff00;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+#infoContent a:hover,
+#infoContent a:focus {
+  color: #b0ff40;
+}
+
+#infoOkBtn {
+  margin-top: 30px;
+  padding: 12px 36px;
+  font-size: 1.1rem;
+  background: #5f82a5;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+#infoOkBtn:hover,
+#infoOkBtn:focus {
+  background: #1a2a44;
+}
+
+@media (max-width: 600px), (orientation: portrait) {
+  html,
+  body {
+    font-size: 18px;
+  }
+
+  #grid {
+    font-size: 1.75rem;
+  }
+
+  .controls {
+    font-size: 1.2rem;
+    padding: 16px 20px;
+    gap: 14px;
+  }
+
+  #infoContent {
+    font-size: 1.4rem;
+    max-width: 90vw;
+    padding: 30px 25px;
+  }
+
+  #infoOkBtn {
+    font-size: 1.3rem;
+    padding: 14px 36px;
+  }
+
+  #loading {
+    font-size: 3.5rem;
+  }
 }
